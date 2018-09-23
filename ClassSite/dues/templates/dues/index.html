@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Reem+Kufi" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 900px)" href="{% static 'dues/styleWide.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="{% static 'dues/styleMobile.css' %}">
+    <title>My Dues</title>
+</head>
+<body>
+    {% load socialaccount %}
+    {% if user.is_authenticated %}
+    <header>
+        <div>
+            <img src="{% static 'home/Ram.jpg' %}" alt="ram" class="RamImageLeft">
+        </div>
+        <div>
+            <p class="title">Shepherd Hill Class of 2021</p>
+        </div>
+        <div>
+            <img src="{% static 'home/Ram.jpg' %}" alt="ram" class="RamImageRight">
+        </div>
+    </header>
+    <div class="box">
+        <div id="a"><p>Hi, {{ user.username }}</p></div>
+        <div id="b"><a href="{% url 'logout' %}">Log out <i class="fas fa-sign-out-alt"></i></a></div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{% url 'contact:home' %}">Contact Your Officers</a></li>
+            <li><a href="{% url 'pictures:index' %}">Pictures</a></li>
+            <li><a href="{% url 'home:index' %}"><i class="fas fa-home"></i>  Home</a></li>
+            <li><a href="{% url 'events:index' %}">Calendar</a></li>
+            <li><a href="{% url 'important:index' %}">Important Events</a></li>
+        </ul>
+    </nav>
+    <div class="header">
+        <div class="headerWords">
+            My Class Dues
+        </div>
+    </div>
+    {% if announcement %}
+    <div class="duesAnnouncement">
+        <div class="announcement">
+            {% for announcement in announcement %}
+            <div>
+                <i class="fas fa-bell"></i>
+            </div>
+            <div>
+                <h3>{{ announcement.announcement }}</h3>
+            </div>
+            <div>
+                <i class="fas fa-bell"></i>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    <section class="dues">
+        <div class="duesArea">
+            {% if freshman %}
+            <div class="grade">
+                <h1>Freshman:</h1>
+                <p>Amount Due: {{ freshman }}</p>
+            </div>
+            <br>
+            {% endif %}
+            {% if sophomore %}
+            <div class="grade">
+                <h1>Sophomore:</h1>
+                <p>Amount Due: {{ sophomore }}</p>
+            </div>
+            <br>
+            {% endif %}
+            {% if junior %}
+            <div class="grade">
+                <h1>Junior:</h1>
+                <p>Amount Due: {{ junior }}</p>
+            </div>
+            <br>
+            {% endif %}
+            {% if senior %}
+            <div class="grade">
+                <h1>Senior:</h1>
+                <p>Amount Due: {{ senior }}</p>
+            </div>
+            <br>
+            {% endif %}
+        </div>
+    </section>
+    {% else %}
+    <header>
+        <div>
+            <img src="{% static 'home/Ram.jpg' %}" alt="ram" class="RamImageLeft">
+        </div>
+        <div>
+            <p class="title">Shepherd Hill Class of 2021</p>
+        </div>
+        <div>
+            <img src="{% static 'home/Ram.jpg' %}" alt="ram" class="RamImageRight">
+        </div>
+    </header>
+    <a href="{% provider_login_url 'google' %}" id="loginLink">
+        <div class="loginButton">
+            <span class="GoogleButton">
+                    <img id="logo" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+                     Login with Google
+            </span>
+        </div>
+    </a>
+    {% endif %}
+</body>
+</html>
