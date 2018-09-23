@@ -28,11 +28,11 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # DEBUG = True
 DEBUG = os.environ['DEBUG']
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ['DATABASE_URL']
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=os.environ['DATABASE_URL']
+#     )
+# }
 
 ALLOWED_HOSTS = [
     'https://classof2021site.herokuapp.com/',
