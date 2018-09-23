@@ -23,17 +23,25 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'sa7t=6q543^*df=p!ndh)zr+2@t0(v$^to+yp#%3pj#kptk&59'
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = 'sa7t=6q543^*df=p!ndh)zr+2@t0(v$^to+yp#%3pj#kptk&59'
+# SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = os.environ['DEBUG']
+DEBUG = True
+# DEBUG = os.environ['DEBUG']
+
+# db_from_env = dj_database_url.config(conn_max_age=500, require_ssl=True)
+# DATABASES['default'].update(db_from_env)
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ['DATABASE_URL']
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd7caa761opough',
+        'USER': 'shepherdhill2021@gmail.com',
+        'PASSWORD': 'ClassOf2021Site#2021',
+        'HOST': 'ec2-54-225-97-112.compute-1.amazonaws.com', # Or something like this
+        'PORT': '5432',                     
+    }
 }
 
 # DATABASES = {
