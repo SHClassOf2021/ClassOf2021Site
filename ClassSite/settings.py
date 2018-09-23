@@ -36,9 +36,9 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgresql-elliptical-94946',
-        'USER': 'shepherdhill2021@gmail.com',
-        'PASSWORD': 'ClassOf2021Site#2021',
+        'NAME': 'd7caa761opough',
+        'USER': 'fxtikfafgyyxcp',
+        'PASSWORD': '0711eaf996ee8bb980a0c746aea06615b28b86d5ee3667f6503866da709c3e27',
         'HOST': 'ec2-54-225-97-112.compute-1.amazonaws.com', # Or something like this
         'PORT': '5432',
     }
