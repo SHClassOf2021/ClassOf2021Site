@@ -1,1 +1,1 @@
-web: gunicorn ClassSite.wsgi
+worker: python ClassOf2021Site.py
