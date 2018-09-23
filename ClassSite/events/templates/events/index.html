@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Reem+Kufi" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 900px)" href="{% static 'events/styleWide.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="{% static 'events/styleMobile.css' %}">
+    <title>Calendar</title>
+</head>
+<body>
+    {% load socialaccount %}
+    {% if user.is_authenticated %}
+    <header>
+        <div>
+            <img src="{% static 'home/Ram.jpg' %}" alt="ram" class="RamImageLeft">
+        </div>
+        <div>
+            <p class="title">Shepherd Hill Class of 2021</p>
+        </div>
+        <div>
+            <img src="{% static 'home/Ram.jpg' %}" alt="ram" class="RamImageRight">
+        </div>
+    </header>
+    <div class="box">
+        <div id="a"><p>Hi, {{ user.username }}</p></div>
+        <div id="b"><a href="{% url 'logout' %}">Log out <i class="fas fa-sign-out-alt"></i></a></div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{% url 'contact:home' %}">Contact Your Officers</a></li>
+            <li><a href="{% url 'pictures:index' %}">Pictures</a></li>
+            <li><a href="{% url 'dues:index' %}">My Dues</a></li>
+            <li><a href="{% url 'home:index' %}"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="{% url 'important:index' %}">Important Events</a></li>
+        </ul>
+    </nav>
+    <div class="header">
+        <div class="headerWords">
+            Upcoming Events
+        </div>
+    </div>
+    {% if events %}
+    <section class="events">
+        <div class="eventArea">
+            {% for event in events %}
+            <div class="event">
+                <h1>{{ event.name }}</h1>
+                <p class="date"><b>Date:</b> {{ event.date }}</p>
+                <p class="start"><b>Start:</b> {{ event.start_time }}</p>
+                <p class="end"><b>End:</b> {{ event.end_time }}</p>
+                <p class="location"><b>Location:</b> {{ event.location }}</p>
+                <p class="info">{{ event.more_info }}</p>
+                <a href="{{ event.website }}">{{ event.website }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+    {% else %}
+    <header>
+        <div>
+            <img src="{% static 'home/Ram.jpg' %}" alt="ram" class="RamImageLeft">
+        </div>
+        <div>
+            <p class="title">Shepherd Hill Class of 2021</p>
+        </div>
+        <div>
+            <img src="{% static 'home/Ram.jpg' %}" alt="ram" class="RamImageRight">
+        </div>
+    </header>
+    <a href="{% provider_login_url 'google' %}" id="loginLink">
+        <div class="loginButton">
+            <span class="GoogleButton">
+                    <img id="logo" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+                     Login with Google
+            </span>
+        </div>
+    </a>
+    {% endif %}
+</body>
+</html>

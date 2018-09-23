@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Reem+Kufi" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen and (min-width: 900px)" href="{% static 'contact/styleWide.css' %}">
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 900px)" href="{% static 'contact/styleMobile.css' %}">
+    <title>Contact Your Officers</title>
+</head>
+<body>
+    {% load socialaccount %}
+    {% if user.is_authenticated %}
+    <header>
+        <div>
+            <img src="{% static 'home/Ram.jpg' %}" alt="ram" class="RamImageLeft">
+        </div>
+        <div>
+            <p class="title">Shepherd Hill Class of 2021</p>
+        </div>
+        <div>
+            <img src="{% static 'home/Ram.jpg' %}" alt="ram" class="RamImageRight">
+        </div>
+    </header>
+    <div class="box">
+        <div id="a"><p>Hi, {{ user.username }}</p></div>
+        <div id="b"><a href="{% url 'logout' %}">Log out <i class="fas fa-sign-out-alt"></i></a></div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home:index' %}"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="{% url 'pictures:index' %}">Pictures</a></li>
+            <li><a href="{% url 'dues:index' %}">My Dues</a></li>
+            <li><a href="{% url 'events:index' %}">Calendar</a></li>
+            <li><a href="{% url 'important:index' %}">Important Events</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="officers1">
+            <div class="officers">
+                Your Class Officers
+            </div>
+        </div>
+        <div class="main">
+            <div class="officerArea">
+                <!-- Announcements -->
+                {% if list_of_officers %}
+                <br>
+                    <div>
+                    {% for officer in list_of_officers %}
+                        <div id="officerBlock">
+                            <h2 id="title">
+                                {{ officer.officer_position }}
+                            </h2>
+                            <p id="fullName">
+                                {{ officer.first_name }} {{ officer.last_name }}
+                            </p>
+                            <p id="body">
+                                {{ officer.email }}
+                            </p>
+                            <p id="body">
+                                {{ officer.phone_number }}
+                            </p>
+                        </div>
+                        <br>
+                    {% endfor %}
+                    </div>
+                {% else %}
+                    <div>
+                        <p>We have no current officers.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    {% else %}
+    <a href="{% provider_login_url 'google' %}" id="loginLink">
+        <div class="loginButton">
+            <span class="GoogleButton">
+                    <img id="logo" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+                     Login with Google
+            </span>
+        </div>
+    </a>
+    {% endif %}
+</body>
+</html>
