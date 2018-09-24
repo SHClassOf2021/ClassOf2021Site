@@ -102,7 +102,7 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
-SITE_ID = 3
+SITE_ID = 2
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -184,7 +184,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New York'
 
 USE_I18N = True
 
