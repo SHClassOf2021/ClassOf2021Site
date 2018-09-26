@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = os.environ.get('DEBUG')
+DEBUG = bool(os.environ.get('DEBUG'))
 
 # db_from_env = dj_database_url.config(conn_max_age=500, require_ssl=True)
 # DATABASES['default'].update(db_from_env)
