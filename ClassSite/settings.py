@@ -35,12 +35,18 @@ DEBUG = bool(os.environ.get('DEBUG'))
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd7caa761opough',
-        'USER': 'fxtikfafgyyxcp',
-        'PASSWORD': '0711eaf996ee8bb980a0c746aea06615b28b86d5ee3667f6503866da709c3e27',
-        'HOST': 'ec2-54-225-97-112.compute-1.amazonaws.com', # Or something like this
-        'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': os.environ.get('DB_ENGINE'),
+        # 'NAME': 'd7caa761opough',
+        'NAME': os.environ.get('DB_NAME'),
+        # 'USER': 'fxtikfafgyyxcp',
+        'USER': os.environ.get('DB_USER'),
+        # 'PASSWORD': '0711eaf996ee8bb980a0c746aea06615b28b86d5ee3667f6503866da709c3e27',
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        # 'HOST': 'ec2-54-225-97-112.compute-1.amazonaws.com', # Or something like this
+        'HOST': os.environ.get('DB_HOST'),
+        # 'PORT': '5432',
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
 
