@@ -27,8 +27,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = bool(os.environ.get('DEBUG'))
+# DEBUG = False
+DEBUG = os.environ.get('DEBUG', False)
 
 # db_from_env = dj_database_url.config(conn_max_age=500, require_ssl=True)
 # DATABASES['default'].update(db_from_env)
@@ -116,6 +116,14 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_SSL_REDIRECT = True
+X_FRAME_OPTIONS = 'DENY'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
