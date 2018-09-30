@@ -27,20 +27,26 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = os.environ.get('DEBUG')
+# DEBUG = False
+DEBUG = bool(os.environ.get('DEBUG'))
 
 # db_from_env = dj_database_url.config(conn_max_age=500, require_ssl=True)
 # DATABASES['default'].update(db_from_env)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd7caa761opough',
-        'USER': 'fxtikfafgyyxcp',
-        'PASSWORD': '0711eaf996ee8bb980a0c746aea06615b28b86d5ee3667f6503866da709c3e27',
-        'HOST': 'ec2-54-225-97-112.compute-1.amazonaws.com', # Or something like this
-        'PORT': '5432',
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': os.environ.get('DB_ENGINE'),
+        # 'NAME': 'd7caa761opough',
+        'NAME': os.environ.get('DB_NAME'),
+        # 'USER': 'fxtikfafgyyxcp',
+        'USER': os.environ.get('DB_USER'),
+        # 'PASSWORD': '0711eaf996ee8bb980a0c746aea06615b28b86d5ee3667f6503866da709c3e27',
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        # 'HOST': 'ec2-54-225-97-112.compute-1.amazonaws.com', # Or something like this
+        'HOST': os.environ.get('DB_HOST'),
+        # 'PORT': '5432',
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
 
@@ -116,6 +122,14 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_SSL_REDIRECT = True
+X_FRAME_OPTIONS = 'DENY'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
