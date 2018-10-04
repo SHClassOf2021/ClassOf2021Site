@@ -14,7 +14,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ.get('C
 # os.environ['CLIENT_SECRET']
 
 gc = gspread.authorize(credentials)
-wks = gc.open((os.environ.get('WKS_NAME')).sheet1
+wks = gc.open((os.environ.get('WKS_NAME'))).sheet1
 
 sheet1 = wks.get_all_records()
 # wks.find(user_email)                       find a string
