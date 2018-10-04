@@ -63,6 +63,7 @@ DATABASES = {
 
 ALLOWED_HOSTS = [
     'https://classof2021site.herokuapp.com/',
+    'https://www.shclassof2021.com/',
 ]
 
 
