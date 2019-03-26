@@ -21,7 +21,6 @@ header {
     padding: 1em;
     background: #800000;
     height: 10vh;
-    width: 100%;
 }
 
 .title {
@@ -46,7 +45,6 @@ header {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "a b";
     background: #959595;
-    width: 100%;
 }
 
 #a {
@@ -71,7 +69,6 @@ nav {
     position: relative;
     padding: .25em;
     background: #C98A28;
-    width: 100%;
 }
 
 nav ul {
@@ -103,10 +100,6 @@ nav a:hover {
 #back {
     text-decoration: none;
     color: black;
-}
-
-section {
-    width: 100%;
 }
 
 .button {
