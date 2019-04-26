@@ -20,12 +20,7 @@ import os
 # # wks.find(user_email)                       find a string
 # # values_list = worksheet.col_values(1)      all values from column 1
 # EmailColumn = wks.col_values(1)
-
-def index(request):
-    email = request.user.email
-    announcement = Dues.objects.all()
-    username = request.user.username
-    
+def get_sheet():
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 
     credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ.get('CLIENT_SECRET'), scope)
@@ -39,6 +34,11 @@ def index(request):
     # values_list = worksheet.col_values(1)      all values from column 1
     EmailColumn = wks.col_values(1)
 
+def index(request):
+    email = request.user.email
+    announcement = Dues.objects.all()
+    username = request.user.username
+    get_sheet()
     i = 0
     for i in range(len(EmailColumn)):
         if str(EmailColumn[i]) == email:
