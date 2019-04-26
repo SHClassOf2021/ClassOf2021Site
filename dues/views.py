@@ -8,23 +8,37 @@ import os
 
 # Create your views here.
 
-scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-
-credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ.get('CLIENT_SECRET'), scope)
-# os.environ['CLIENT_SECRET']
-
-gc = gspread.authorize(credentials)
-wks = gc.open((os.environ.get('WKS_NAME'))).sheet1
-
-sheet1 = wks.get_all_records()
-# wks.find(user_email)                       find a string
-# values_list = worksheet.col_values(1)      all values from column 1
-EmailColumn = wks.col_values(1)
+# scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+#
+# credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ.get('CLIENT_SECRET'), scope)
+# # os.environ['CLIENT_SECRET']
+#
+# gc = gspread.authorize(credentials)
+# wks = gc.open((os.environ.get('WKS_NAME'))).sheet1
+#
+# sheet1 = wks.get_all_records()
+# # wks.find(user_email)                       find a string
+# # values_list = worksheet.col_values(1)      all values from column 1
+# EmailColumn = wks.col_values(1)
 
 def index(request):
     email = request.user.email
     announcement = Dues.objects.all()
     username = request.user.username
+    
+    scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(os.environ.get('CLIENT_SECRET'), scope)
+    # os.environ['CLIENT_SECRET']
+
+    gc = gspread.authorize(credentials)
+    wks = gc.open((os.environ.get('WKS_NAME'))).sheet1
+
+    sheet1 = wks.get_all_records()
+    # wks.find(user_email)                       find a string
+    # values_list = worksheet.col_values(1)      all values from column 1
+    EmailColumn = wks.col_values(1)
+
     i = 0
     for i in range(len(EmailColumn)):
         if str(EmailColumn[i]) == email:
