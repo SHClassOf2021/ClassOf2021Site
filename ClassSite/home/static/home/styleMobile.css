@@ -66,34 +66,29 @@ header {
 }
 
 nav {
-    padding: .5em;
-    
-    height: 78vh ;
+    position: relative;
+    padding: .25em;
+    background: #C98A28;
 }
 
 nav ul {
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
     align-items: center;
-    margin-top: 6vh;
 }
 
 nav ul li {
-    display: block;
-    margin: 1em;
+    display: flex;
 }
 
 nav a {
-    display: block;
-    padding: 8px 50px;
-    margin: 0px 10px 0px 10px;
+    margin: .5em;
+    padding: 1em;
     background: #C4C4C4;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 12px;
     text-align: center;
-    color: black;
     word-wrap: normal;
+    color: black;
     box-shadow: 2px 2px 6px #000000;
 }
 
