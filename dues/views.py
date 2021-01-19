@@ -31,6 +31,7 @@ def index(request):
     for i in range(len(EmailColumn)):
         if str(EmailColumn[i]) == email:
             emailRow = sheet1[i-1]
+            print(emailRow)
             d = literal_eval(str(emailRow))
             context = {
                 'freshman' : d['Freshman Dues'],
