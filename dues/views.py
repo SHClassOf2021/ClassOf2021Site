@@ -35,11 +35,11 @@ def index(request):
             d = literal_eval(str(emailRow))
             print(d)
             context = {
-                'freshman' : d['Freshman Dues'],
-                'sophomore' : d['Sophomore Dues'],
-                'junior' : d['Junior Dues'],
-                'senior' : d['Senior Dues'],
-                'final_dues': d['Final Dues Owed'],
+                'freshman' : str(d['Freshman Dues']),
+                'sophomore' : str(d['Sophomore Dues']),
+                'junior' : str(d['Junior Dues']),
+                'senior' : str(d['Senior Dues']),
+                'final_dues': str(d['Final Dues Owed']),
                 'announcement' : announcement,
             }
             print(context)
