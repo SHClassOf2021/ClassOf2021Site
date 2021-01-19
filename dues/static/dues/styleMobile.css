@@ -176,6 +176,10 @@ nav a:hover {
     padding: 1em;
 }
 
+.grade1 {
+    background-color: #b8b8b8;
+}
+
 .grade:hover {
     background: #b8b8b8;
 }
