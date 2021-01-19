@@ -36,6 +36,7 @@ def index(request):
                 'sophomore' : d['Sophomore Dues'],
                 'junior' : d['Junior Dues'],
                 'senior' : d['Senior Dues'],
+                'final_dues': d['Final Dues Owed'],
                 'announcement' : announcement,
             }
             return render(request, 'dues/index.html', context)
