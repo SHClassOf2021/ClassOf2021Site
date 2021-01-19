@@ -33,6 +33,7 @@ def index(request):
             emailRow = sheet1[i-1]
             print(emailRow)
             d = literal_eval(str(emailRow))
+            print(d)
             context = {
                 'freshman' : d['Freshman Dues'],
                 'sophomore' : d['Sophomore Dues'],
@@ -41,4 +42,5 @@ def index(request):
                 'final_dues': d['Final Dues Owed'],
                 'announcement' : announcement,
             }
+            print(context)
             return render(request, 'dues/index.html', context)
