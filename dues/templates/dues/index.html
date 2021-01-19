@@ -62,6 +62,13 @@
     {% endif %}
     <section class="dues">
         <div class="duesArea">
+            {% if final_dues %}
+            <div class="grade1">
+                <h1>Total Class Dues Outstanding:</h1>
+                <p>Amount Due by Graduation: ${{ final_dues }}</p>
+            </div>
+            <br>
+            {% endif %}
             {% if freshman %}
             <div class="grade">
                 <h1>Freshman:</h1>
@@ -87,13 +94,6 @@
             <div class="grade">
                 <h1>Senior:</h1>
                 <p>Amount Due: ${{ senior }}</p>
-            </div>
-            <br>
-            {% endif %}
-            {% if final_dues %}
-            <div class="grade1">
-                <h1>Total Class Dues Outstanding:</h1>
-                <p>Amount Due by Graduation: ${{ final_dues }}</p>
             </div>
             <br>
             {% endif %}
